@@ -1,0 +1,83 @@
+body{
+	background-color: grey;
+}
+.title{
+	color: black;
+
+}
+.container{
+	padding-left:0px;
+	padding-right: 5px;
+	height: 100%;
+	width: 100%;
+}
+
+.header{
+	height: 10%;
+	width: 100%;
+	padding-left:15px;
+	
+}
+.navcust{
+	
+	border:0px;
+	width: 100%;
+}
+.aside{
+	padding-left:15px;
+	margin-left: 10px;
+	width:20%;
+	background-color: black;
+	color: white;
+	line-height: 5px;
+	display: inline-block;
+}
+.title{
+	line-height: 12px;
+	display: inline-block;
+}
+.moto{
+	line-height: 12px;
+	display: inline-block;
+}
+.contact{
+	background-color: white;
+}
+.main{
+	text-align: center;
+	position: absolute;
+	left: 23%;
+	top: 25%;
+	border:1px solid white;
+	width: 70%;
+	display: inline-block;
+	color: black;
+	background-color: black;
+}
+.submain{
+	width: 100%;
+	cursor: pointer;
+	display: inline-block;
+	border: 5px solid black;
+	background-color: #333;
+}
+.imagefront{
+	width: 200px;
+	height: 200px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+
+}
+a:hover{
+	text-decoration: none;
+}
+
+a{
+	color: white;
+
+}
+
+.submain:hover{
+	box-shadow: -3px -3px 10px white inset;
+}

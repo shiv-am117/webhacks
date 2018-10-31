@@ -10,11 +10,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="zxx">
 
 <head>
-	<title>Evento</title>
+	<title>Party Planners Entertainment Category Bootstrap Responsive Web Template | Home :: W3layouts</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
-	<meta name="keywords" content="event manager" />
+	<meta name="keywords" content="Party Planners Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -45,16 +45,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	    rel="stylesheet">
 	<!-- //Web-Fonts -->
 </head>
-<?php 
+
+<body>
+	<?php 
 
 	require "core.php";
 	require "connect.php";
 	require "connectsoc.php";
-	if(isset($_SESSION['id'])) {
-		$id=($_SESSION['id']);
-	}
-	else $id=0;
-	
+	$id=$_SESSION['id'];
+	 if($id==0)
+	 	header("Location:userlogin.php");
 	 function finduser($data){
 	 	global $id;
 	 global $link;
@@ -68,8 +68,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
  ?>
-
-<body>
 	<!-- header -->
 	<header>
 		<!-- top-bar -->
@@ -88,26 +86,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<ul>
 							
 							<li >
-								<a href="societyregister.php" class="text-dark ">Society Signup</a>
+								<a href="#services" class="text-dark scroll">Society Signup</a>
 							</li>
 							<li></li>
 							<li>
-								<a href="societylogin.php" class="text-dark ">Society Login</a>
+								<a href="#news" class="text-dark scroll">Society Login</a>
 							</li>
 							<li></li>
 							<li >
-								<a href="userregister.php" class="text-dark ">User Signup</a>
+								<a href="#clients" class="text-dark scroll">User Signup</a>
 							</li>
 							<li></li>
 							<li>
-								<a href="userlogin.php" class="text-dark ">User Login</a>
+								<a href="#contact" class="text-dark scroll">User Login</a>
 							</li>
 							
 							<li>
-								<a href="logout.php" class="text-dark ">Logout</a>
-							</li>
-							<li>
-								<a href="event.php" class="text-dark ">Add Event</a>
 							</li>
 						</ul>
 					</div>
@@ -119,16 +113,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="row wrap">
 				<div class="col-xl-8 col-md-6 col-sm-5 p-0 text-sm-left text-center">
 					<!-- logo -->
+					<!-- logo -->
+					<!-- logo -->
 					<h1>
 						<a class="navbar-brand font-weight-bold" href="index.php">
 							Event
 							<span class="font-weight-light mr-1">Planners</span>
 							<img src="images/logo2.png" class="img-fluid logo-img pt-1" alt="">
 							<span class="text-dark logo-style-w3l">Fun For You</span>
-							<h6><?php
-							if($id)
-							  echo "Welcome ".finduser("name");
-							?></h6>
 						</a>
 					</h1>
 					<!-- //logo -->
@@ -190,63 +182,53 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //header 2 -->
 
 	<!-- banner -->
-	
+	<?php
+			
+		
+				$eid=htmlentities($_POST['id']);
 
-	<div class="banner-text-agile">
-		<div class="wrap">
-			<div class="row banner-agiles">
-				<div class="col-xl-6 banner-w3lstexts text-white pt-xl-4">
-					
-					
-					
-				</div>
 				
-			</div>
-		</div>
-	</div>
-<br><br>	<!-- //banner -->
-
-	
-		<h3 class="tittle text-center text-uppercase mb-sm-5 mb-4">
-				  Welcome To Saturnalia,
-				<span>Come Expireinece Infinity</span>
-			</h3>
+		$query="SELECT institute_name,date,event,description from `event` WHERE `id`='$eid' ";
+		$result=mysqli_query($link,$query);
+		
+			$output=mysqli_fetch_assoc($result);
+			$ins=$output["institute_name"];
+			
+			$date=$output["date"];
+			$evename=$output["event"];
+			$desc=$output["description"];
+			
+			
+		
+		
+		?>
+	<br><img src="images/welcome.png" align="center" width="1340px">
+	<h1 align="center" > <?php echo $evename; ?></h1>
 	<br>
-    <h3 align="center">Venue:-  Thapar Institute</h3>
+    <h3 align="center">Venue:-  <?php echo $ins; ?></h3>
 	<br>
-	<h3 align="center">Date:- 17-Nov-2018 to 19-Nov-2018</h3>
+	<h3 align="center">Date:- <?php echo $date; ?></h3>
 
-	
-	<!-- about -->
-	<div class="banner-bottom py-5" id="about">
+<div class="banner-bottom py-5" id="about">
 		<div class="wrap py-xl-5 py-lg-3">
 			<p class="sub-tittle text-uppercase text-center">Few Words</p>
 			<h3 class="tittle text-center text-uppercase mb-sm-5 mb-4">
-				About
-				<span>Saturnalia</span>
+				About The
+				<span>Event</span>
 			</h3>
+			<h6><?php echo $desc; ?></h6>
 			<div class="w3ls-about-agile">
-				<h4 class="text-dark">Saturnalia is the annual Techno-Cultural Fest of TIET, Patiala and one of the largest fest in North India with footfall of 15k+ and online reach of 10 lac..</h4>
-				<p class="my-3">architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-					aspernatur aut odit aut fugit,
-					sed quia consequuntur magni dolores eos.quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-					aliquid</p>
 				
-				<p class="my-3">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-					magni dolores eos qui
-					ratione voluptatem sequi nesciunt.</p>
-				<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-					numquam eius
-					modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima </p>
+				
 			</div>
 		</div>
 	</div>
-
 	
 
 
 
 
+	
 
 
 	<!-- Js files -->

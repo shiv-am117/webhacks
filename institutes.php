@@ -14,7 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
-	<meta name="keywords" content="event manager" />
+	<meta name="keywords" content="Party Planners Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -50,11 +50,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	require "core.php";
 	require "connect.php";
 	require "connectsoc.php";
-	if(isset($_SESSION['id'])) {
-		$id=($_SESSION['id']);
-	}
-	else $id=0;
-	
+	$id=$_SESSION['id'];
+	 if($id==0)
+	 	header("Location:userlogin.php");
 	 function finduser($data){
 	 	global $id;
 	 global $link;
@@ -68,7 +66,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
  ?>
-
 <body>
 	<!-- header -->
 	<header>
@@ -119,16 +116,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="row wrap">
 				<div class="col-xl-8 col-md-6 col-sm-5 p-0 text-sm-left text-center">
 					<!-- logo -->
+					<!-- logo -->
+					<!-- logo -->
 					<h1>
 						<a class="navbar-brand font-weight-bold" href="index.php">
 							Event
 							<span class="font-weight-light mr-1">Planners</span>
 							<img src="images/logo2.png" class="img-fluid logo-img pt-1" alt="">
 							<span class="text-dark logo-style-w3l">Fun For You</span>
-							<h6><?php
-							if($id)
-							  echo "Welcome ".finduser("name");
-							?></h6>
+							<h6>Welcome <?php echo finduser("name");?></h6>
 						</a>
 					</h1>
 					<!-- //logo -->
@@ -190,61 +186,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //header 2 -->
 
 	<!-- banner -->
-	
+	<table name='mytable' id='mytable' class='table table-hover'>
+ <thead><th>Institute Name</th><th>  Events</th><th>  View</th>
 
-	<div class="banner-text-agile">
-		<div class="wrap">
-			<div class="row banner-agiles">
-				<div class="col-xl-6 banner-w3lstexts text-white pt-xl-4">
-					
-					
-					
-				</div>
-				
-			</div>
-		</div>
-	</div>
-<br><br>	<!-- //banner -->
+ </thead>
+ <tbody>
+ 	<?php
+ 		$sql = "SELECT  id,institute_name, event FROM event";
+$result=mysqli_query($link,$sql);
+		
+			
 
-	
-		<h3 class="tittle text-center text-uppercase mb-sm-5 mb-4">
-				  Welcome To Saturnalia,
-				<span>Come Expireinece Infinity</span>
-			</h3>
-	<br>
-    <h3 align="center">Venue:-  Thapar Institute</h3>
-	<br>
-	<h3 align="center">Date:- 17-Nov-2018 to 19-Nov-2018</h3>
+if(mysqli_affected_rows($link)>0) {
+   
+    while($row = mysqli_fetch_assoc($result)) {
 
-	
-	<!-- about -->
-	<div class="banner-bottom py-5" id="about">
-		<div class="wrap py-xl-5 py-lg-3">
-			<p class="sub-tittle text-uppercase text-center">Few Words</p>
-			<h3 class="tittle text-center text-uppercase mb-sm-5 mb-4">
-				About
-				<span>Saturnalia</span>
-			</h3>
-			<div class="w3ls-about-agile">
-				<h4 class="text-dark">Saturnalia is the annual Techno-Cultural Fest of TIET, Patiala and one of the largest fest in North India with footfall of 15k+ and online reach of 10 lac..</h4>
-				<p class="my-3">architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-					aspernatur aut odit aut fugit,
-					sed quia consequuntur magni dolores eos.quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-					aliquid</p>
-				
-				<p class="my-3">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-					magni dolores eos qui
-					ratione voluptatem sequi nesciunt.</p>
-				<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-					numquam eius
-					modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima </p>
-			</div>
-		</div>
-	</div>
+        echo "<tr>" ."<td>". $row["institute_name"] ."</td>"."<td>". $row["event"]."</td><td>";
+        echo '<form method="POST" action="single.php"><input type="hidden" name="id" value="'.$row["id"].'"><button type="submit">View</button></form></td></tr>';
+    }}
+ 	?>
+ </tbody></table>
+	<!-- //banner -->
 
 	
 
-
+	
 
 
 
